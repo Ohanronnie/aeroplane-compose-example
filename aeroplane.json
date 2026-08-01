@@ -1,0 +1,11 @@
+{
+  "project": "compose-example",
+  "compose": "compose.yaml",
+  "routes": {
+    "root": { "service": "frontend", "port": 3000 },
+    "api": { "service": "api", "port": 3001 }
+  },
+  "services": {
+    "db": { "expose": false }
+  }
+}

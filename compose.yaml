@@ -1,0 +1,29 @@
+services:
+  frontend:
+    build: ./frontend
+    environment:
+      REVISION: one
+
+  api:
+    build: ./api
+    environment:
+      REVISION: one
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_PASSWORD: example-only
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data:
