@@ -24,7 +24,6 @@ createServer(async (_request, response) => {
       service: "api",
       revision: process.env.REVISION,
       databaseReachable: await databaseReachable(),
-      envFileLoaded: process.env.ENV_FILE_CHECK === "cli-uploaded",
     }),
   );
 }).listen(3001, "0.0.0.0");

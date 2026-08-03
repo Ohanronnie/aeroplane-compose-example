@@ -9,7 +9,6 @@ services:
     environment:
       REVISION: two
       DB_HOST: db
-      ENV_FILE_CHECK: ${AEROPLANE_ENV_FILE_CHECK}
     depends_on:
       db:
         condition: service_healthy
